@@ -14,6 +14,7 @@ library(ggplot2)
 library(plotly)
 library(gt)
 library(leaflet)
+library(bslib)
 
 YEARS_LIST  <- as.character(2018:2023)
 MONTHS_LIST <- 1:12
@@ -36,7 +37,7 @@ pax_cie_all <- import_compagnies_data(
     "compagnies/ASP_CIE_2021.csv",
     "compagnies/ASP_CIE_2022.csv",
     "compagnies/ASP_CIE_2023.csv")
-  )
+)
 pax_lsn_all <- import_liaisons_data(
   c("liaisons/ASP_LSN_2018.csv",
     "liaisons/ASP_LSN_2019.csv",
@@ -58,14 +59,3 @@ trafic_aeroports <- pax_apt_all %>%
   mutate(
     date = as.Date(paste(anmois, "01", sep=""), format = "%Y%m%d")
   )
-
-ggplot(trafic_aeroports,aes(x=date, y=trafic)) + 
-  geom_line()
-
-plot_airport_line(pax_apt_all, "LFJL")
-
-stats_aeroports <- summary_stat_airport(pax_apt_all)
-
-create_table_airports(stats_aeroports)
-
-  map_leaflet_airport(pax_apt_all, airports_location, 5,2022)
