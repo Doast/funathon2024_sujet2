@@ -1,6 +1,6 @@
 function(input, output) {
   
-  table_liaisons = reactive({
+  table_aeroports = reactive({
     return(
       summary_stat_airport(
         create_data_from_input(
@@ -13,7 +13,7 @@ function(input, output) {
   })
   
   output$table <- render_gt(
-    create_table_airports(table_liaisons())
+    create_table_airports(table_aeroports())
   )
   
   output$carte <- renderLeaflet(

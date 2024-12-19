@@ -7,7 +7,7 @@ input_date <- shinyWidgets::airDatepickerInput(
   view = "months",
   minView = "months",
   minDate = "2018-01-01",
-  maxDate = "2022-12-01",
+  maxDate = "2023-12-01",
   dateFormat = "MMMM yyyy",
   language = "fr"
 )
